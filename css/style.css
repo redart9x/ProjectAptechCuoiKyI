@@ -1,0 +1,226 @@
+/* body{font-family: 'Gluten', cursive !important;} */
+body {
+    font-family: 'Open-sans' !important;
+    font-size: 14px;
+    color: #231F20;
+    width: 100%;
+}
+
+nav {width: 100%; font-family: 'Gluten' !important; text-transform: uppercase;}
+/* aside{
+    width: 10%; float: left;
+} */
+main{
+    /* width: 90%;float: left; */
+    min-height: 100vh;
+    background-image: url("../image/background.png");    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin-bottom: 30px;
+}
+/* footer{width: 100%; background: black;min-height: 50px; float: left;} */
+/* .bg-nav{background-color: rgba(0,0,0,0.9) !important;} */
+.nav-link{color: white !important; margin-right: 30px;}
+.nav-link:hover{
+    font-size: 18px !important;
+    color: #0385ff !important;
+}
+.col-md-3 {
+    flex: 0 0 auto;
+    width: 20% !important;
+}
+  /* .ourTeam {
+    height: 100vh;
+} */
+
+.ourTeam h2 {
+    color: #fff;
+    margin: 0 0 30px 0
+}
+
+.ourTeam .i {
+    margin: 4% 0 0 4%;
+
+}
+
+.ourTeam .i .c {
+    background: #fff;
+    -webkit-box-shadow: 0 4px 0 #2b86ac;
+    -moz-box-shadow: 0 4px 0 #2b86ac;
+    box-shadow: 0 4px 0 #2b86ac;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 110px
+}
+
+.ourTeam .i .c .wrap {
+    position: relative
+}
+
+.ourTeam .i .c .wrap img {
+    width: 100%;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease
+}
+
+.ourTeam .i .c .wrap .info {
+    padding: 30px 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease
+}
+
+.ourTeam .i .c .wrap .info .name {
+    font-family: 'Gluten' !important;
+    margin: 0;
+    font-size: 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0
+}
+
+.ourTeam .i .c .wrap .info .position {
+    margin: 0;
+    font-size: 14px;
+    font-size: 1.4rem;
+    color: #555659
+}
+
+.ourTeam .i .c .more {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease
+}
+
+.ourTeam .i .c .more p {
+    margin: 0 18px 30px 18px;
+    line-height: 22px
+}
+
+.ourTeam .i .c .more .socials {
+    margin: 0 0 20px 0
+}
+
+.ourTeam .i .c .more .socials a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 22px;
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0 0 0 3px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    text-align: center;
+    -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, .1)
+}
+.ourTeam .i .c:hover img {
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    -webkit-opacity: 0;
+    opacity: 0.5
+}
+
+.ourTeam .i .c:hover .info {
+    top: 0;
+    font-size: 1.2em;
+    color: #0385ff;
+}
+
+.ourTeam .i .c:hover .more {
+    bottom: 0;
+    color: rgb(0, 0, 0);
+}
+.sub-nav {
+    margin-top: 76px;
+}
+.sub-nav > ul {
+    box-shadow: 0px 5px 10px 5px #888888;
+    height: 50px;
+}
+.sub-nav .nav-link {
+    color: #7e868d !important;
+}
+.sub-nav .nav-item {
+    margin: auto 0;
+}
+
+.sub-nav .nav-link a {
+    padding: 15px;
+}
+.main-nav {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+footer {
+    color: white;
+    display: flex;
+    padding: 50px 120px;
+}
+footer .title {
+    font-size: 36px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer .contact div {
+    margin-top: 15px;
+}
+
+footer .contact span {
+    margin-left: 15px;
+}
+footer .footer-intro, footer .contact {
+    width: 50%;
+    padding: 0 10px;
+}
+
+footer .footer-social-icon {
+    font-size: 36px;
+}
+
+footer .footer-social-icon a:hover {
+    color: white;
+    font-size: 40px;
+}
+.btn-cursor {
+    cursor: pointer;
+}
