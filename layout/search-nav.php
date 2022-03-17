@@ -86,7 +86,7 @@
                     <a href="?request=dinning&brandid=<?php echo $item['id'] ?>" class="text-decoration-none">
                         <li class="p-3 <?php if (isset($_GET['brandid']) and $_GET['brandid'] == $item['id']) : echo "aside-nav-selected";
                                         else : echo 'text-white';
-                                        endif; ?>"> <?php echo $item['brand_name']; ?></li>
+                                        endif; ?>"> <?php echo $item['name']; ?></li>
                     </a>
                 </ul>
             </div>

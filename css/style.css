@@ -41,8 +41,14 @@ main{
 }
 
 .ourTeam .i {
-    margin: 4% 0 0 4%;
+    margin-top: 70px;
+}
 
+@media only screen and (max-width: 576px) {
+    .ourTeam .i {
+        max-width: 400px;
+        /* min-width: 50%; */
+    }
 }
 
 .ourTeam .i .c {
@@ -73,10 +79,11 @@ main{
     -moz-border-radius-topright: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    -webkit-transition: all .3s ease;
+    /* -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
-    -o-transition: all .3s ease
+    -o-transition: all .3s ease */
+    transition: 0.3s ease;
 }
 
 .ourTeam .i .c .wrap .info {
@@ -84,10 +91,11 @@ main{
     position: absolute;
     top: 100%;
     width: 100%;
-    -webkit-transition: all .3s ease;
+    /* -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
-    -o-transition: all .3s ease
+    -o-transition: all .3s ease */
+    transition: 0.3s ease;
 }
 
 .ourTeam .i .c .wrap .info .name {
@@ -110,10 +118,11 @@ main{
     position: absolute;
     bottom: -100%;
     width: 100%;
-    -webkit-transition: all .3s ease;
+    /* -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
-    -o-transition: all .3s ease
+    -o-transition: all .3s ease */
+    transition: 0.3s ease;
 }
 
 .ourTeam .i .c .more p {
@@ -133,7 +142,7 @@ main{
     font-size: 22px;
     font-size: 2.2rem;
     color: #fff;
-    margin: 0 0 0 3px;
+    /* margin: 0 0 0 3px; */
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -221,6 +230,35 @@ footer .footer-social-icon a:hover {
     color: white;
     font-size: 40px;
 }
+
+@media only screen and (max-width: 992px) {
+    footer {
+        padding: 50px 70px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    footer {
+        padding: 10px 30px;
+    }
+    footer .footer-intro {
+        width: 60%;
+    }
+    footer .contact {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    footer {
+        display: block;
+    }
+    footer .footer-intro, footer .contact {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+
 .btn-cursor {
     cursor: pointer;
 }

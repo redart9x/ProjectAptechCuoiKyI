@@ -35,7 +35,7 @@ $ac = new adminController();
       box-shadow: 1px 0px 34px -5px rgba(10,9,10,1);
     }
 
-    .btn {margin: 0 auto;width: 150px;}
+    /* .btn {margin: 0 auto;width: 150px;} */
 
 
 

@@ -13,6 +13,9 @@ session_start();
   <title>Admin</title>
 </head>
 <body>
-  <?php $ac->SignInAdmin(); ?>
+  <?php
+    $ac->SignInAdmin(); 
+    include "../layout/toast.php";
+  ?>
 </body>
 </html>

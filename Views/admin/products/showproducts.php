@@ -37,6 +37,9 @@
 
 	<?php endforeach;?>
 </table>
+
+<?php include "../layout/paginator.php" ?>
+
 <a href="?request=addproduct">
 <button class="btn btn-primary">Thêm Mới</button>
 </a>

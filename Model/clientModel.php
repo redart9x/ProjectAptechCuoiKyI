@@ -15,29 +15,87 @@ class ClientModel
 
 	function getFoods()
 	{
-		$query = "SELECT * FROM foods WHERE status=1";
+		$limit = 9;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(f.id) AS total FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		// $query = "SELECT * FROM foods WHERE status=1";
+		$query = "SELECT f.* FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1 ORDER BY name ASC " . $limitQuery;
 
 		if (isset($_GET['brandid'])) :
-			$result = $this->connect->query($query . " and brand_id=" . $_GET['brandid']);
+			$data = $this->connect->query($query . " AND brand_id=" . $_GET['brandid'] . " ". $limitQuery);
 		else :
-			$result = $this->connect->query($query);
+			$data = $this->connect->query($query);
 		endif;
 
-		return $result;
+		// return $result;
+		return ['result'=>$data, 'total'=>$total];
+
 	}
 
 	function getCharacters()
 	{
-		return $this->connect->query("SELECT * FROM park_character WHERE status = 1");
+		$limit = 12;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM park_character where status = 1");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM park_character WHERE status = 1 ORDER BY name ASC " . $limitQuery);
+		return ['result'=>$data, 'total'=>$total];
 	}
 
 	function getGame()
 	{
-		return $this->connect->query("SELECT * FROM games WHERE status = 1");
+		$limit = 12;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM games where status = 1");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM games WHERE status = 1 ORDER BY name ASC " . $limitQuery);
+		return ['result'=>$data, 'total'=>$total];
+
 	}
 
 	function getEvents() {
-		return $this->connect->query("SELECT * FROM events ORDER BY open_date DESC");
+		$where = '';
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) as total FROM events");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$curDate = date("Y-m-d H:i:s");
+		if (isset($_GET['status'])) {
+			if ($_GET['status'] == 'upcoming') {
+				$where = " WHERE '$curDate' < open_date";
+			} else if ($_GET['status'] == 'openning') {
+				$where = " WHERE '$curDate' >= open_date AND '$curDate' <= end_date";
+			} else if ($_GET['status'] == 'end') {
+				$where = " WHERE '$curDate' > end_date";
+			}
+		}
+		$data = $this->connect->query("SELECT * FROM events" . $where . " ORDER BY open_date DESC " . $limitQuery);
+		return ['result'=>$data, 'total'=>$total];
 	}
 
 	function sendFeedback() {

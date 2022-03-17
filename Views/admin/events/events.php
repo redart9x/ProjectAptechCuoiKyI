@@ -139,6 +139,7 @@
         pointer-events: none;
     }
 </style>
+<div style="display: none" data-type="events" id="info-type"></div>
 <div>
     <?php $addItem = mysqli_fetch_assoc($result) ?>
     <div class="whats-up-content">
@@ -198,14 +199,16 @@
             <?php
 
             endforeach;
+            include "./../layout/paginator.php";
+
         else : ?>
             <div class="text-center mb-5 display-5">Không có dữ liệu</div>
         <?php
         endif;
         ?>
+
     </div>
 </div>
 
 <?php include "./partial/modal.php"; ?>
 <?php include "./partial/renderFullItem.php"; ?>
-<?php include "../layout/toast.php" ?>

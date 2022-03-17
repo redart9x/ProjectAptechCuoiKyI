@@ -20,7 +20,9 @@
     const userFeedbackForm = document.querySelector("#user-add-feedback-form");
     const adminAddEvent = document.querySelector(".admin-add-event-form");
     const adminUpdateEvent = document.querySelector(".admin-update-event-form");
+    const adminAddBrand = document.querySelector(".admin-add-brand-form");
     // const email = document.querySelector("#email");
+    const adminUpdateBrand = document.querySelector(".admin-update-brand-form");
     // const name = document.querySelector("#name");
     // const message = document.querySelector("#message");
     // const openDate = document.querySelector("#open_date");
@@ -75,6 +77,14 @@
                 patternField: null,
                 fieldString: ''
             },
+            updateEndDate: {
+                field: document.querySelector("#update-end_date"),
+                fieldError: document.querySelector(".update-end_date-error"),
+                fieldMinlength: 1,
+                fieldMaxlength: 255,
+                patternField: null,
+                fieldString: ''
+            },
             updateContent: {
                 field: document.querySelector("#update-content"),
                 fieldError: document.querySelector(".update-content-error"),
@@ -83,14 +93,6 @@
                 patternField: null,
                 fieldString: ''
             },
-            // updateImage: {
-            //     field: document.querySelector("#update-image"),
-            //     fieldError: document.querySelector(".update-image-error"),
-            //     fieldMinlength: 1,
-            //     fieldMaxlength: 255,
-            //     patternField: null,
-            //     fieldString: ''
-            // },
             updateSlogan: {
                 field: document.querySelector("#update-slogan"),
                 fieldError: document.querySelector(".update-slogan-error"),
@@ -103,7 +105,7 @@
             // add event form
             addName: {
                 field: document.querySelector("#add-name"),
-                fieldError: document.querySelector(".create-name-error"),
+                fieldError: document.querySelector(".add-name-error"),
                 fieldMinlength: 1,
                 fieldMaxlength: 255,
                 patternField: null,
@@ -112,7 +114,15 @@
 
             addOpenDate: {
                 field: document.querySelector("#add-open_date"),
-                fieldError: document.querySelector(".create-open_date-error"),
+                fieldError: document.querySelector(".add-open_date-error"),
+                fieldMinlength: 1,
+                fieldMaxlength: 255,
+                patternField: null,
+                fieldString: ''
+            },
+            addEndDate: {
+                field: document.querySelector("#add-end_date"),
+                fieldError: document.querySelector(".add-end_date-error"),
                 fieldMinlength: 1,
                 fieldMaxlength: 255,
                 patternField: null,
@@ -120,7 +130,7 @@
             },
             addContent: {
                 field: document.querySelector("#add-content"),
-                fieldError: document.querySelector(".create-content-error"),
+                fieldError: document.querySelector(".add-content-error"),
                 fieldMinlength: 3,
                 fieldMaxlength: 1000,
                 patternField: null,
@@ -128,7 +138,7 @@
             },
             addImage: {
                 field: document.querySelector("#add-image"),
-                fieldError: document.querySelector(".create-image-error"),
+                fieldError: document.querySelector(".add-image-error"),
                 fieldMinlength: 1,
                 fieldMaxlength: 255,
                 patternField: null,
@@ -136,7 +146,7 @@
             },
             addSlogan: {
                 field: document.querySelector("#add-slogan"),
-                fieldError: document.querySelector(".create-slogan-error"),
+                fieldError: document.querySelector(".add-slogan-error"),
                 fieldMinlength: 1,
                 fieldMaxlength: 255,
                 patternField: null,
@@ -178,15 +188,29 @@
                 submitFeedback.disabled = true;
             }
         } else if (adminAddEvent && action === 'add') {
-            if (allField.addName.fieldError.textContent === "" && allField.addContent.fieldError.textContent === "" && allField.addImage.fieldError.textContent === "" && allField.addOpenDate.fieldError.textContent === "" && allField.addSlogan.fieldError.textContent === "") {
+            if (allField.addName.fieldError.textContent === "" && allField.addContent.fieldError.textContent === "" && allField.addImage.fieldError.textContent === "" && allField.addOpenDate.fieldError.textContent === "" && allField.addSlogan.fieldError.textContent === "" && allField.addEndDate.field.value > allField.addOpenDate.field.value) {
                 addEventBtn.disabled = false;
             } else {
+                if (allField.addEndDate.field.value < allField.addOpenDate.field.value && allField.addEndDate.field.value != '' && allField.addOpenDate.field.value != '') {
+                    allField.addOpenDate.fieldError.textContent = 'Thời gian bắt đầu phải < kết thúc!'
+                    allField.addOpenDate.field.classList.add("input-error");
+                } else {
+                    allField.addEndDate.fieldError.textContent = ''
+                    allField.addEndDate.field.classList.remove("input-error");
+                }
                 addEventBtn.disabled = true;
             }
         } else if (adminUpdateEvent && action === 'update') {
-            if (allField.updateName.fieldError.textContent === "" && allField.updateContent.fieldError.textContent === "" && allField.updateOpenDate.fieldError.textContent === "" && allField.updateSlogan.fieldError.textContent === "") {
+            if (allField.updateName.fieldError.textContent === "" && allField.updateContent.fieldError.textContent === "" && allField.updateOpenDate.fieldError.textContent === "" && allField.updateSlogan.fieldError.textContent === "" && allField.updateEndDate.field.value > allField.updateOpenDate.field.value) {
                 updateEventBtn.disabled = false;
             } else {
+                if (allField.updateEndDate.field.value < allField.updateOpenDate.field.value  && allField.addEndDate.field.value != '' && allField.addOpenDate.field.value != '') {
+                    allField.updateOpenDate.fieldError.textContent = 'Thời gian bắt đầu phải < kết thúc!'
+                    allField.updateOpenDate.field.classList.add("input-error");
+                } else {
+                    allField.updateOpenDate.fieldError.textContent = ''
+                    allField.updateOpenDate.field.classList.remove("input-error");
+                }
                 updateEventBtn.disabled = true;
             }
         }

@@ -51,7 +51,8 @@
         filter: brightness(35%);
     } */
 
-    .sponsor-content, .list-pros {
+    .sponsor-content,
+    .list-pros {
         padding: 40px 100px;
     }
 
@@ -123,6 +124,72 @@
         max-width: 200px;
         object-fit: cover;
     }
+
+    @media only screen and (max-width: 1200px) {
+
+        .sponsor-content,
+        .list-pros {
+            padding: 40px 60px;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        h1 {
+            font-size: 30px !important;
+        }
+
+        .sponsor-image img {
+            max-width: 170px;
+        }
+
+        .sponsor-image {
+            padding: 0 50px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        h1 {
+            font-size: 24px !important;
+        }
+
+        .sponsor-image img {
+            max-width: 100px;
+        }
+
+        .sponsor-image {
+            padding: 0 30px;
+        }
+
+        .sponsor-pros {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            grid-row-gap: 30px;
+        }
+    }
+    @media only screen and (max-width: 576px) {
+        h1 {
+            font-size: 18px !important;
+        }
+
+        .sponsor-content,
+        .list-pros {
+            padding: 40px 30px;
+        }
+
+        .sponsor-image img {
+            max-width: 100px;
+        }
+
+        .sponsor-image {
+            padding: 0;
+        }
+
+        .sponsor-pros {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            grid-row-gap: 30px;
+        }
+    }
 </style>
 <div class="sponsor-page">
     <div class="sponsor-header">
@@ -170,7 +237,7 @@
 
         </div>
     </div>
-    <div class="list-pros mt-5">
+    <div class="list-pros">
         <div class="sponsor-title d-flex align-items-center mb-3">
             <div>
                 <img class="icon-info" src="./image/sponsor/sponsor-icon.png" />

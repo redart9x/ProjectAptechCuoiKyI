@@ -1,34 +1,34 @@
-<div class="container-fluid bg" >
+<div class="container-fluid bg my-5" >
 	<div class="row justify-content-center">
-		<div class="cold-md-3 col-sm-6 col-xs-12 row-container">
+		<div class="row-container">
 			<form method="POST" enctype="multipart/form-data">
 				<h3>ADD A NEW FOOD</h3>
 				<p style="color:red;"><?php echo $alert??""; ?></p>
-				<label>Brand: </label> 
-					<select class="form-select" name="brandid">
+				<label for="brand">Brand: </label> 
+					<select id="brand" class="form-select" name="brandid">
 						<?php foreach($brands as $item):  ?>
-						<option value="<?=$item['id']?>"><?=$item['brand_name']?></option>
+						<option value="<?=$item['id']?>"><?=$item['name']?></option>
 						<?php endforeach; ?>
 					</select>
-				<label>Food Name: </label> <input class="form-control" type="text" name="foodname" required>
-				<label>Price: </label> <input class="form-control" type="text" name="price" required>
-				<label>Image: </label> <input class="form-control" type="file" name="image"  required>
-				<label>Details: </label> <textarea name="details" class="form-control"> </textarea>
+				<label for="food">Food Name: </label> <input class="form-control" id="food" type="text" name="foodname" required>
+				<label for="price">Price: </label> <input class="form-control" id="price" type="text" name="price" required>
+				<label for="image">Image: </label> <input class="form-control" id="image" type="file" name="image"  required>
+				<label for="detail">Details: </label> <textarea name="details" id="detail" rows="4" class="form-control"> </textarea>
 				<label>Status: </label>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="status"  value="1">
-					<label class="form-check-label">
-			    		Active
+					<input class="form-check-input" type="radio" name="status" id="food-active" value="1">
+					<label class="form-check-label" for="food-active">
+			    		Kích hoạt
 			  		</label>
 			  	</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="status"  value="0">
-					<label class="form-check-label">
-			    		Unactive
+					<input class="form-check-input" id="food-unactive" type="radio" name="status"  value="0">
+					<label class="form-check-label" for="food-unactive">
+			    		Hủy kích hoạt
 			  		</label>
 			  	</div>
 				
-				<input type="submit" name="submit" value="ADD" class="btn btn-primary" style="margin-top: 10px;width: 150px;">
+				<input type="submit" name="submit" value="Thêm mới" class="btn btn-primary" style="margin-top: 10px;width: 150px;">
 			</form>
 		</div>
 	</div>

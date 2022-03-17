@@ -25,12 +25,34 @@ class adminModel
 
 	function getFeedback()
 	{
-		return $this->connect->query("SELECT * FROM feedback ORDER BY send_time DESC");
+		$limit = 3;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM feedback");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM feedback ORDER BY send_time DESC");
+		return ['result' => $data, 'total' => $total];
 	}
 
 	function getEvent()
 	{
-		return $this->connect->query("SELECT * FROM events ORDER BY open_date DESC");
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM events");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data =  $this->connect->query("SELECT * FROM events ORDER BY open_date DESC " . $limitQuery);
+		return ['result' => $data, 'total' => $total];
 	}
 
 	function deleteFeedback()
@@ -58,7 +80,7 @@ class adminModel
 		$content = $_POST['content'];
 		$openDate = $_POST['open_date'];
 		$slogan = $_POST['slogan'];
-		if (isset($_POST['end_date'])):
+		if (strtotime($_POST['end_date'])) :
 			$endDate = $_POST['end_date'];
 		endif;
 		if (isset($_POST['imageUrl'])) {
@@ -73,10 +95,10 @@ class adminModel
 		$expensions = array("jpeg", "jpg", "png", "gif");
 		if (in_array($file_ext, $expensions) === false && $fileName != '') :
 			return 0;
-		elseif ($fileName == ''):
+		elseif ($fileName == '') :
 			$result = $this->connect->query("UPDATE events SET name = '$name', content='$content', open_date='$openDate', slogan='$slogan', end_date='$endDate' WHERE id = '$id'");
 			return 1;
-		else:
+		else :
 			unlink($folder . $image);
 			move_uploaded_file($fileTempt, $folder . $imageName);
 			$result = $this->connect->query("UPDATE events SET name = '$name', content='$content', image='$imageName', open_date='$openDate', slogan='$slogan', end_date='$endDate' WHERE id = '$id'");
@@ -90,7 +112,9 @@ class adminModel
 		// $image = $_POST['image'];
 		$openDate = $_POST['open_date'];
 		$slogan = $_POST['slogan'];
-		$endDate = $_POST['end_date'];
+		if (strtotime($_POST['end_date'])) :
+			$endDate = $_POST['end_date'];
+		endif;
 		$fileName = $_FILES['image']['name'];
 		$fileTempt = $_FILES['image']['tmp_name'];
 		$folder = "../image/events/";
@@ -105,18 +129,28 @@ class adminModel
 			$result = $this->connect->query("INSERT INTO events(name, content, image, open_date, slogan, end_date) VALUES('$name', '$content', '$imageName', '$openDate', '$slogan', '$endDate')");
 			return 1;
 		endif;
-		
 	}
 
 	function showBrands()
 	{
-		return $this->connect->query("SELECT * FROM brand_food");
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM brand_food");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM brand_food " . $limitQuery);
+		return ['result' => $data, 'total' => $total];
 	}
 
 	function checkDuplicateBrand()
 	{
 		if (isset($_POST['brandName'])) :
-			$result = $this->connect->query("SELECT * FROM brand_food WHERE brand_name = '" . $_POST['brandName'] . "'");
+			$result = $this->connect->query("SELECT * FROM brand_food WHERE name = '" . $_POST['brandName'] . "'");
 			if (mysqli_num_rows($result) != 0) :
 				return true;
 			else :
@@ -127,7 +161,7 @@ class adminModel
 
 	function addBrand()
 	{
-		return $this->connect->query("INSERT INTO brand_food (brand_name, status) VALUES ('" . $_POST['brandName'] . "','" . $_POST['brandStatus'] . "')");
+		return $this->connect->query("INSERT INTO brand_food (name, status) VALUES ('" . $_POST['brandName'] . "','" . $_POST['brandStatus'] . "')");
 	}
 
 	function getBrandById()
@@ -141,7 +175,7 @@ class adminModel
 	{
 		$name = addslashes($_POST['brandName']);
 		$id = $_GET['brandid'];
-		$result = $this->connect->query("SELECT * from brand_food where brand_name = '$name' and ID != '$id'");
+		$result = $this->connect->query("SELECT * from brand_food where name = '$name' and id != '$id'");
 		if (mysqli_num_rows($result) != 0) :
 			return true;
 		else :
@@ -154,14 +188,15 @@ class adminModel
 		$name = addslashes($_POST['brandName']);
 		$status = $_POST['brandStatus'];
 		$id = $_GET['brandid'];
-		return $this->connect->query("UPDATE brand_food SET brand_name ='$name' , status = '$status' where ID = '$id'");
+		return $this->connect->query("UPDATE brand_food SET name ='$name' , status = '$status' where id = '$id'");
 	}
 
 	function deleteBrand()
 	{
 		$result = $this->connect->query("SELECT * from foods where brand_id =" . $_GET['brandid']);
 		if (mysqli_num_rows($result) != 0) :
-			return $this->connect->query("UPDATE brand_food SET status=0 where id=" . $_GET['brandid']);
+			// return $this->connect->query("UPDATE brand_food SET status=0 where id=" . $_GET['brandid']);
+			return 2;
 		else :
 			return $this->connect->query("DELETE FROM brand_food where id=" . $_GET['brandid']);
 		endif;
@@ -169,7 +204,18 @@ class adminModel
 
 	function showProducts()
 	{
-		return $this->connect->query("SELECT * FROM foods");
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM foods");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM foods " . $limitQuery);
+		return ['result' => $data, 'total' => $total];
 	}
 
 	function checkDuplicateNameFood()
@@ -256,7 +302,18 @@ class adminModel
 
 	function showCharacter()
 	{
-		return $this->connect->query("SELECT * FROM park_character");
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM park_character");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM park_character " . $limitQuery);
+		return ['result' => $data, 'total' => $total];
 	}
 
 	function checkDuplicateNameCharacter()
@@ -343,7 +400,18 @@ class adminModel
 
 	function showGame()
 	{
-		return $this->connect->query("SELECT * FROM games");
+		$limit = 10;
+		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$curPage = $curPage < 1 ? 1 : $curPage;
+		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM games");
+		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+		$total = ceil($numberRow / $limit);
+		$limitQuery = '';
+		if ($numberRow > $limit) {
+			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		}
+		$data = $this->connect->query("SELECT * FROM games " .$limitQuery);
+		return ['result' => $data, 'total' => $total];
 	}
 	function checkDuplicateNameGame()
 	{

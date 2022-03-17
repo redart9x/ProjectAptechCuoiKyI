@@ -54,13 +54,13 @@
     }
 
     .introduce-img.img-2 {
-        bottom: -5%;
-        right: -5%;
+        bottom: -9%;
+        right: 1%;
     }
 
     .introduce-img.img-3 {
-        left: 5%;
-        bottom: -33%;
+        left: -1%;
+        bottom: -42%;
     }
 
     .aim-img.img-1 {
@@ -133,6 +133,82 @@
         box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.2) !important;
         border-color: red;
     }
+
+    @media only screen and (max-width: 1200px) {
+
+        .introduce-img,
+        .aim-img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .introduce-img.img-2 {
+            bottom: 20%;
+            right: 1%;
+        }
+
+        .introduce-img.img-3 {
+            left: -1%;
+            bottom: -8%;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        h1 {
+			font-size: 30px !important;
+		}
+        .park-introduce, .park-aim, .park-guide, .park-contact {
+            padding: 40px 60px;
+        }
+        .introduce-img,
+        .aim-img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .introduce-img.img-1 {
+            top: -1%;
+            left: 5%;
+        }
+        .introduce-img.img-2 {
+            bottom: 30%;
+            right: 4%;
+        }
+
+        .introduce-img.img-3 {
+            left: -1%;
+            bottom: 9%;
+        }
+
+        .aim-img.img-1 {
+            bottom: 21%;
+            right: -8%;
+        }
+        .aim-img.img-2 {
+            bottom: 40%;
+            right: 0%;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        h1 {
+			font-size: 24px !important;
+		}
+        .content-aim, .content-introduce, .contact-container {
+			display: block !important;
+		}
+        .park-introduce > div, .content-aim > div, .content-introduce > div, .contact-container > div {
+            width: 100% !important;
+        }
+        .aim-img, .introduce-img {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 576px) {
+		h1 {
+			font-size: 18 !important;
+		}
+		
+	}
 </style>
 
 <!-- MAP -->
@@ -258,3 +334,4 @@
 </div>
 
 <?php include "./layout/validate.php" ?>
+<?php include "./layout/toast.php" ?>

@@ -13,44 +13,48 @@ class ClientController
 		if (isset($_GET['request'])) :
 			switch ($_GET['request']):
 				case 'experience':
-					$result = $this->cm->getGame();
+					$res = $this->cm->getGame();
+					$maxPage = $res['total'];
+					$result = $res['result'];
 					include "./views/client/experience.php";
 					break;
 				case 'dinning':
 					// $cc = $this;
-					$result = $this->cm->getFoods();
+					$res = $this->cm->getFoods();
+					$maxPage = $res['total'];
+					$result = $res['result'];
 					$brand = $this->cm->getBrandFood();
 					include "./views/client/leisure_dinning.php";
 					break;
 				case 'parkcharacters':
-					$result = $this->cm->getCharacters();
+					$res = $this->cm->getCharacters();
+					$maxPage = $res['total'];
+					$result = $res['result'];
 					include "./views/client/parkcharacters.php";
 					break;
 				case 'parkinformation':
 					if (isset($_POST['name']) && isset($_POST['message']) && isset($_POST['email'])) :
 						$result = $this->cm->sendFeedback();
-						header("location: ?request=parkinformation");
+						header("location: ?request=parkinformation&send=1");
 					endif;
 					ob_end_flush();
 					include "./views/client/parkinformation.php";
 					break;
 				case 'whatsup':
-					$result = $this->cm->getEvents();
+					$res = $this->cm->getEvents();
+					$maxPage = $res['total'];
+					$result = $res['result'];
 					// var_dump(mysqli_fetch_array($result));
 					include "./views/client/whatsup.php";
-					break;
-				case 'sign-in':
-					if (isset($_POST['username']) && isset($_POST['password'])) :
-						$this->cm->checkSignIn();
-					endif;
-					include "./views/client/sign-in.php";
 					break;
 				case 'businessopportunities':
 					include "./views/client/business-opportunities.php";
 					break;
 			endswitch;
 		else :
-			$result = $this->cm->getGame();
+			$res = $this->cm->getGame();
+			$maxPage = $res['total'];
+			$result = $res['result'];
 			include "views/client/experience.php";
 		endif;
 	}

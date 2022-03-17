@@ -34,6 +34,9 @@
 
 	<?php endforeach;?>
 </table>
+
+<?php include "../layout/paginator.php" ?>
+
 <a href="?request=addCharacter">
 <button class="btn btn-primary">Thêm Mới</button>
 </a>

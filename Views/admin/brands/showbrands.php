@@ -10,7 +10,7 @@
 	foreach($brands as $item): ?>
 		<tr>
 			<td scope="row" class="table-primary"><?php echo $item['id']?></td>
-			<td scope="row" class="table-success"><?php echo $item['brand_name']?></td>
+			<td scope="row" class="table-success"><?php echo $item['name']?></td>
 			<td scope="row" class="table-danger"><?php echo $item['status']==1? "Active" :"Unactive"?></td>
 			<td>
 				
@@ -29,5 +29,7 @@
 	<?php endforeach;?>
 </table>
 
+<?php include "../layout/paginator.php" ?>
+
 <a href="?request=addBrands">
-<button class="btn btn-primary" formaction="?request=addBrands" >Thêm Mới</button>
+<button class="btn btn-primary" formaction="?request=addBrands" >Thêm Mới</button></a>

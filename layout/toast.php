@@ -1,10 +1,10 @@
 <style>
   .toast-custom {
     position: fixed;
-    top: 80px;
+    bottom: 40px;
     right: 10px;
     z-index: 999;
-    width: 250px;
+    min-width: 250px;
     padding: 10px;
     gap: 3%;
     cursor: pointer;
@@ -60,11 +60,13 @@
 </div>
 
 <?php if (isset($_GET['delete'])) : ?>
-  <div class="result-data" style="display: none;" data-result="<?= $_GET['delete'] ?>" data-action="delete"></div>
+  <div class="result-data" style="display: none;" data-result="<?= $_GET['delete'] ?>" data-action="delete" data-reason = "<?= isset($_GET['reason']) ? $_GET['reason'] : '' ?>"></div>
 <?php elseif ((isset($_GET['update']))) : ?>
   <div class="result-data" style="display: none;" data-result="<?= $_GET['update'] ?>" data-action="update"></div>
 <?php elseif ((isset($_GET['create']))) : ?>
   <div class="result-data" style="display: none;" data-result="<?= $_GET['create'] ?>" data-action="create"></div>
+<?php elseif ((isset($_GET['send']))) : ?>
+  <div class="result-data" style="display: none;" data-result="<?= $_GET['send'] ?>" data-action="send"></div>
 <?php endif; ?>
 
 <script>
@@ -78,7 +80,7 @@
   const openToast = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    if (urlParams.get('delete') || urlParams.get('update') || urlParams.get('create')) {
+    if (urlParams.get('delete') || urlParams.get('update') || urlParams.get('create') || urlParams.get('send')) {
       const newUrl = `${window.location.pathname}?request=${urlParams.get('request')}`;
       window.history.pushState({}, null, newUrl);
     }
@@ -115,8 +117,12 @@
   }
 
   if (resultData) {
+    const errorBrandFood = 'brand-has-food';
     const result = resultData.getAttribute("data-result");
     const action = resultData.getAttribute("data-action");
+    const reason = resultData.getAttribute("data-reason");
+    console.log(errorBrandFood)
+    console.log(reason)
     if (result === '1') {
       toastCustom.classList.remove('toast-error-custom')
       toastCustom.classList.add('toast-success-custom')
@@ -128,6 +134,8 @@
         toastMessage.textContent = 'Cập nhật thành công!'
       } else if (action === 'create') {
         toastMessage.textContent = 'Thêm mới thành công!'
+      } else if (action === 'send') {
+        toastMessage.textContent = 'Gửi Feedback thành công!'
       }
       setTimeout(() => {
         openToast();
@@ -139,10 +147,15 @@
       toastIcon.classList.add("fa-circle-exclamation")
       if (action === 'delete') {
         toastMessage.textContent = 'Xóa thất bại!'
+        if (reason === errorBrandFood) {
+          toastMessage.textContent = 'Không thể xóa Brand đang có Food!'
+        }
       } else if (action === 'update') {
         toastMessage.textContent = 'Cập nhật thất bại!'
       } else if (action === 'create') {
         toastMessage.textContent = 'Thêm mới thất bại!'
+      } else if (action === 'send') {
+        toastMessage.textContent = 'Gửi Feedback thất bại!'
       }
       setTimeout(() => {
         openToast();

@@ -1,18 +1,18 @@
 <meta charset="utf-8">
 <table class="table  table-hover table-striped table-bordered" >
 <tr>
-	<th scope="col" width="5%">ID</th>
+	<!-- <th scope="col" width="5%">ID</th> -->
 	<th scope="col" width="15%">GAME NAME</th>
 	<th scope="col" width="10%">IMAGE</th>
 	<th scope="col" width="55%">DETAIL</th>
 	<th scope="col" width="5%">STATUS</th>
-	<th scope="col" width="10%">ACTION</th>
+	<th scope="col" width="15%">ACTION</th>
 </tr>
 
 <?php 
 	foreach($game as $item): ?>
 		<tr>
-			<td scope="row" ><?=$item['id']?></td>
+			<!-- <td scope="row" ><?=$item['id']?></td> -->
 			<td scope="row" ><?=$item['name']?></td>
 			<td scope="row" ><img src="../image/game/<?=$item['image']?>" width=50px></td>
 			<td scope="row" ><?=$item['detail']?></td>
@@ -34,6 +34,9 @@
 
 	<?php endforeach;?>
 </table>
+
+<?php include "../layout/paginator.php" ?>
+
 <a href="?request=addGame">
 <button class="btn btn-primary">Thêm Mới</button>
 </a>

@@ -24,9 +24,9 @@
   </style>
 </head>
 <body> 
-<div class="container-fluid bg" >
+<div class="container-fluid bg my-5" >
   <div class="row justify-content-center">
-    <div class="cold-md-3 col-sm-6 col-xs-12 row-container">
+    <div class="row-container">
       <form method="POST">
         <h3> Log In With Admin Account</h3>
         <section style="color:red;"><?=$alert??'' ?></section>

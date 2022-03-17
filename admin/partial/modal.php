@@ -115,6 +115,7 @@
             case "end_date":
                 name_field = 'Thời gian kết thúc';
                 type_field = "datetime-local";
+                required_field = true;
                 break;
             case "password":
                 name_field = 'Mật khẩu';
@@ -201,7 +202,7 @@
                 itemValue[key] = '';
                 keyId = 'add-' + key
                 formField = `add-form-field-${key}`
-                errorField = `create-${key}-error`
+                errorField = `add-${key}-error`
             } else if (action === 'delete') {
                 modalBody.textContent = "Bạn có chắc chắn muốn xóa Event này không?"
                 modalTitle.textContent = "Xóa Event"
@@ -274,14 +275,17 @@
     DeleteModal.addEventListener('show.bs.modal', function(event) {
         handleUpdateOrCreateOrDelete('delete');
         deleteBtn.appendChild(spinner)
+        validateFunc('delete');
     })
     EditModal.addEventListener('show.bs.modal', function(event) {
         handleUpdateOrCreateOrDelete('update');
         editBtn.appendChild(spinner)
+        validateFunc('update')
     })
     CreateModal.addEventListener('show.bs.modal', function(event) {
         handleUpdateOrCreateOrDelete('create');
         addBtn.appendChild(spinner)
+        validateFunc('add')
     })
     // DeleteModal.addEventListener('hidden.bs.modal', function(event) {
     //     formDeleteBtn.reset();

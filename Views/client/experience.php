@@ -43,11 +43,11 @@ Chơi Thỏa Thích - Vui Hết Mình
 </br> Cùng Các Trò Chơi Trong FUNZONE
 </h3>
 <!-- game -->
-<div class="container">
+<div class="container" style="padding-bottom: 100px;">
 <div class="section ourTeam">
   <div class="row">
     <?php foreach($result as $item): ?>
-    <div class="col-xs-6 col-sm-4 col-md-3 i">
+    <div class="col-sm-8 offset-sm-2 offset-md-0 col-xs-10 col-xl-3 col-lg-4 col-md-6 i">
       <div class="c text-center">
         <div class="wrap">
           <img src="image/game/<?= $item['image']?>" alt="#"  width="235px" height="220px" class="img-responsive">
@@ -65,10 +65,4 @@ Chơi Thỏa Thích - Vui Hết Mình
 </div>
 </div>
 
-
-<!-- MAP -->
-<!-- <div id="map">Map</div>
-<div style="text-align:center; margin-top: 70px; ">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d930.9816317015897!2d105.81840342920385!3d21.035625650854865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab0d6e603741%3A0x208a848932ac2109!2sAptech%20Computer%20Education!5e0!3m2!1svi!2s!4v1645102623406!5m2!1svi!2s" width="65%" height="450px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-</div> -->
+<?php include "./layout/paginator.php" ?>

@@ -1,11 +1,11 @@
-<div class="container-fluid bg" >
+<div class="container-fluid bg my-5" >
 	<div class="row justify-content-center">
-		<div class="cold-md-3 col-sm-6 col-xs-12 row-container">
+		<div class="row-container">
 <form method="POST">
 	<h3>UPDATE BRAND</h3>
 	<p style="color:red;"><?php echo $alert??""; ?></p>
 	<label>ID: </label> <input class="form-control" type="text" name="brandId" readonly value="<?php echo $brands['id'] ?>">
-	<label>Name: </label> <input class="form-control" type="text" name="brandName"  value="<?php echo $brands['brand_name'] ?>">
+	<label>Name: </label> <input class="form-control" type="text" name="brandName"  value="<?php echo $brands['name'] ?>">
 
 	<label>Status: </label>
 	<div class="form-check">

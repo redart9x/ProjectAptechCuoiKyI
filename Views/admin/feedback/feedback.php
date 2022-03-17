@@ -81,6 +81,7 @@
                 </div>
             </div>
         <?php endforeach;
+        include "../layout/paginator.php";
     else : ?>
         <div class="text-center mb-5 display-5">Không có dữ liệu</div>
     <?php endif; ?>
@@ -88,4 +89,3 @@
 
 <?php include "./partial/modal.php"; ?>
 <?php include "./partial/renderFullItem.php"; ?>
-<?php include "../layout/toast.php" ?>
