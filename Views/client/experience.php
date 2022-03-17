@@ -46,7 +46,9 @@ Chơi Thỏa Thích - Vui Hết Mình
 <div class="container" style="padding-bottom: 100px;">
 <div class="section ourTeam">
   <div class="row">
-    <?php foreach($result as $item): ?>
+    <?php 
+    if (mysqli_num_rows($result) > 0):
+    foreach($result as $item): ?>
     <div class="col-sm-8 offset-sm-2 offset-md-0 col-xs-10 col-xl-3 col-lg-4 col-md-6 i">
       <div class="c text-center">
         <div class="wrap">
@@ -60,7 +62,13 @@ Chơi Thỏa Thích - Vui Hết Mình
         </div>
       </div>
     </div>
-    <?php endforeach; ?>
+    <?php endforeach;
+    else:
+      ?>
+      <div>Không có dữ liệu!</div>
+      <?php
+    endif;
+    ?>
   </div>
 </div>
 </div>

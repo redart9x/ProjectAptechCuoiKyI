@@ -15,7 +15,7 @@ class ClientModel
 
 	function getFoods()
 	{
-		$limit = 9;
+		$limit = 2;
 		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
 		$curPage = $curPage < 1 ? 1 : $curPage;
 		$totalResult = $this->connect->query("SELECT COUNT(f.id) AS total FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1");
@@ -26,10 +26,12 @@ class ClientModel
 			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
 		}
 		// $query = "SELECT * FROM foods WHERE status=1";
-		$query = "SELECT f.* FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1 ORDER BY name ASC " . $limitQuery;
-
+		$query = "SELECT f.* FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1";
 		if (isset($_GET['brandid'])) :
-			$data = $this->connect->query($query . " AND brand_id=" . $_GET['brandid'] . " ". $limitQuery);
+			$totalResult = $this->connect->query("SELECT COUNT(f.id) AS total FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1 AND f.brand_id =" . $_GET['brandid']);
+			$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+			$total = ceil($numberRow / $limit);
+			$data = $this->connect->query($query . " AND f.brand_id=" . $_GET['brandid'] . " ORDER BY name ASC " . $limitQuery);
 		else :
 			$data = $this->connect->query($query);
 		endif;

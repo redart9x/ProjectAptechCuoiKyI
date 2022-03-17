@@ -133,18 +133,22 @@ class adminModel
 
 	function showBrands()
 	{
-		$limit = 10;
-		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
-		$curPage = $curPage < 1 ? 1 : $curPage;
-		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM brand_food");
-		$numberRow = mysqli_fetch_assoc($totalResult)['total'];
-		$total = ceil($numberRow / $limit);
-		$limitQuery = '';
-		if ($numberRow > $limit) {
-			$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+		if (isset($_GET['request']) && $_GET['request'] == 'brands') {
+			$limit = 10;
+			$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
+			$curPage = $curPage < 1 ? 1 : $curPage;
+			$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM brand_food");
+			$numberRow = mysqli_fetch_assoc($totalResult)['total'];
+			$total = ceil($numberRow / $limit);
+			$limitQuery = '';
+			if ($numberRow > $limit) {
+				$limitQuery = "LIMIT " . ($curPage - 1) * $limit . ", " . $limit;
+			}
+			$data = $this->connect->query("SELECT * FROM brand_food " . $limitQuery);
+			return ['result' => $data, 'total' => $total];
+		} else {
+			return $this->connect->query("SELECT * FROM brand_food WHERE status = 1");
 		}
-		$data = $this->connect->query("SELECT * FROM brand_food " . $limitQuery);
-		return ['result' => $data, 'total' => $total];
 	}
 
 	function checkDuplicateBrand()

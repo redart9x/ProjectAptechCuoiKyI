@@ -52,7 +52,9 @@
   </div>
   <div class="section ourTeam content-food">
     <div class="row m-0 list-food">
-      <?php foreach ($result as $item) : ?>
+      <?php 
+      if (mysqli_num_rows($result) > 0):
+      foreach ($result as $item) : ?>
         <div class="offset-md-1 offset-sm-2 offset-xl-0 offset-md-0 col-lg-4 col-xl-4 col-md-4 col-sm-6 col-xs-6 i item-food">
           <div class="c text-center">
             <div class="wrap">
@@ -67,10 +69,15 @@
             </div>
           </div>
         </div>
-      <?php endforeach; ?>
+      <?php endforeach;
+      include "./layout/paginator.php";
+
+      else: ?>
+      <div class="no-data">Không có dữ liệu!</div>
+      <?php
+      endif;
+      ?>
 
     </div>
   </div>
 </div>
-
-<?php include "./layout/paginator.php" ?>

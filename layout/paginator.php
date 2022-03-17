@@ -38,7 +38,7 @@
         pointer-events: none;
     }
 </style>
-<div data-name-page="<?= isset($_GET['request']) ? $_GET['request'] : '' ?>" data-current-page="<?= isset($_GET['page']) && isset($maxPage) && $_GET['page'] <= $maxPage ? $_GET['page'] : 1 ?>" data-max-page="<?= isset($maxPage) ? $maxPage : null ?>" class="data-current-page"></div>
+<div data-name-page="<?= isset($_GET['request']) ? $_GET['request'] : '' ?>" data-current-page="<?= isset($_GET['page']) && isset($maxPage) && $_GET['page'] <= $maxPage ? $_GET['page'] : 1 ?>" data-max-page="<?= isset($maxPage) ? $maxPage : null ?>" data-add-url="<?= isset($_GET['brandid']) ? $_GET['brandid'] : '' ?>" class="data-current-page"></div>
 <div class="container-page d-flex justify-content-center align-items-center">
     <a href="!#" class="paginator first-page">
         <div>
@@ -91,9 +91,13 @@
     let handlePage = curPage;
     const maxPage = dataCurPageElement ? +dataCurPageElement.getAttribute('data-max-page') : 1
     const namePage = dataCurPageElement.getAttribute('data-name-page')
+    const brandId = dataCurPageElement.getAttribute('data-add-url')
     let pageValue = ''
     if (namePage === 'dinning') {
         pageValue = '?request=dinning&page='
+        if (brandId !== '') {
+            pageValue = `?request=dinning&brandid=${brandId}&page=`
+        }
     } else if (namePage === 'whatsup') {
         pageValue = '?request=whatsup&page='
     } else if (namePage === 'experience' || namePage === '') {

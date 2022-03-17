@@ -415,13 +415,12 @@
 						<div class="slogan"><?= $item['slogan']; ?></div>
 					</div>
 				</div>
-			<?php endforeach;
+			<?php endforeach; include "./layout/paginator.php";
 		else : ?>
 			<div class="text-center mb-5 display-5">Không có dữ liệu</div>
 		<?php endif; ?>
 	</div>
 </div>
-<?php include "./layout/paginator.php" ?>
 <?php include "./admin/partial/renderFullItem.php"; ?>
 
 <script>
