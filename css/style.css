@@ -12,7 +12,7 @@ nav {width: 100%; font-family: 'Gluten' !important; text-transform: uppercase;}
 } */
 main{
     /* width: 90%;float: left; */
-    min-height: 100vh;
+    min-height: 70vh;
     background-image: url("../image/background.png");    
     background-size: cover;
     background-repeat: no-repeat;

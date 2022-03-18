@@ -16,7 +16,7 @@
 				  		</label>
 				  	</div>
 					<div class="form-check">
-						<input class="form-check-input" id="game-unactive type="radio" name="status"  value="0" <?=$result['status']==0? "checked":""?>>
+						<input class="form-check-input" id="game-unactive" type="radio" name="status"  value="0" <?=$result['status']==0? "checked":""?>>
 						<label class="form-check-label" for="game-unactive">
 				    		Hủy kích hoạt
 				  		</label>

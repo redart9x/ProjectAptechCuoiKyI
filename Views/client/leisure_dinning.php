@@ -4,10 +4,6 @@
     .item-food {
       max-width: 300px;
     }
-
-    .list-food {
-      justify-content: space-between;
-    }
   }
 
   .nav-aside-food {

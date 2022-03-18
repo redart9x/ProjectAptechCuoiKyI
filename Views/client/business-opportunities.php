@@ -166,6 +166,7 @@
             grid-row-gap: 30px;
         }
     }
+
     @media only screen and (max-width: 576px) {
         h1 {
             font-size: 18px !important;
@@ -190,13 +191,18 @@
             grid-row-gap: 30px;
         }
     }
+
+    #sponsor {
+        position: relative;
+        top: -50px;
+    }
 </style>
 <div class="sponsor-page">
     <div class="sponsor-header">
         <!-- <img src="image/carousel/4.jpg" alt = "#"/> -->
         <div class="text-intro">
             <h1 class="title-intro">FUNZONE SPONSORSHIP</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti suscipit repellendus velit cupiditate aliquam tenetur. Pariatur maxime, unde repellendus exercitationem dolores vel dolorem ullam non!</p>
+            <p>Trở thành đối tác phát triển của Funzone để giúp chúng tôi tiếp tục phát triển Funzone trở thành khu vui chơi lớn nhất của cả nước, đồng thời cũng được nhận những ưu đãi đặc biệt. <a href="#sponsor">Xem ngay</a></p>
             <!-- <a class="btn-href" href="mailto:funzone@funzone.com">BECOME A SPONSOR</a> -->
             </a>
         </div>
@@ -207,11 +213,11 @@
                 <div>
                     <img class="icon-info" src="./image/sponsor/intro.png" />
                 </div>
-                <h1 class="m-0">INTRODUCING THE FAMILY FUNZONE</h1>
+                <h1 class="m-0">Giới thiệu về FAMILY FUNZONE</h1>
             </div>
-            <p>Starting at this Saturday’s Sky Bet League Two match against Oldham Athletic, we are opening Home Park on the morning of the match so that the Green Army can begin their build-up to the game even earlier.</p>
-            <p>The Devonport end will be open from 11am to allow supporters to meet, enjoy each other’s company, get a drink and something to eat, enjoy pre-match entertainment, watch the early TV game, share thoughts about the match against the Latics, and generally soak up the pre-match vibe.</p>
-            <p>There will be games for the children and – as an opening-day special – all food and drink in the Family Fan Zone will be half-price.</p>
+            <p>Đây là sân chơi dành cho Funzone cùng các đối tác phát triển của Funzone, cùng nhau tạo điều kiện để cùng phát triển, tạo ra nhiều giá trị mới hơn, nhiều cơ hội để phát triển hơn.</p>
+            <p>Hằng năm, Family Funzone đều tổ chức các sự kiện để tạo điều kiện cho các đối tác gặp gỡ, trao đổi, tìm kiếm các cơ hội đầu tư mới. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima nulla consequatur obcaecati aut provident itaque non distinctio assumenda veniam porro, numquam exercitationem, et deleniti est.</p>
+            <p>Đừng bỏ lỡ các cơ hộ để trở thành đối tác của Funzone ngay hôm nay! Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias similique, minima ipsa debitis enim ad.</p>
             <p>Admission is free but limited to the first 250 applicants, who need to be a Season-Ticket or Flexi-Ticket Holder; a Club Argyle Member; 1886 Member; or Big Green Lottery subscriber.</p>
             <p>Ticket are available from the Home Park Ticket Office and on line at now.</p>
         </div>
@@ -220,9 +226,9 @@
                 <div>
                     <img class="icon-info" src="./image/sponsor/dollar-icon.png" />
                 </div>
-                <h1 class="m-0">SPONSORS</h1>
+                <h1 class="m-0">Các nhà tài trợ chính</h1>
             </div>
-            <p class="text-center">We are happy to share the success with out long term partners</p>
+            <!-- <p class="text-center">We are happy to share the success with out long term partners</p> -->
             <div class="sponsor-image">
                 <div class="sponsor-item">
                     <img src="image/sponsor/EmailTree-logo-1.png" alt="#" />
@@ -237,12 +243,13 @@
 
         </div>
     </div>
+    <div id="sponsor"></div>
     <div class="list-pros">
         <div class="sponsor-title d-flex align-items-center mb-3">
             <div>
                 <img class="icon-info" src="./image/sponsor/sponsor-icon.png" />
             </div>
-            <h1 class="m-0">FUNZONE PROPOSE A UNIQUE MARKETING OPPORTUNITY</h1>
+            <h1 class="m-0">Các ưu đãi đặc biệt cho đối tác của Funzone</h1>
         </div>
         <div class="sponsor-pros">
             <div class="pros-item">

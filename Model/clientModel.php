@@ -15,7 +15,7 @@ class ClientModel
 
 	function getFoods()
 	{
-		$limit = 2;
+		$limit = 9;
 		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
 		$curPage = $curPage < 1 ? 1 : $curPage;
 		$totalResult = $this->connect->query("SELECT COUNT(f.id) AS total FROM foods f LEFT JOIN brand_food b on f.brand_id = b.id where b.status = 1 AND f.status = 1");
@@ -33,7 +33,7 @@ class ClientModel
 			$total = ceil($numberRow / $limit);
 			$data = $this->connect->query($query . " AND f.brand_id=" . $_GET['brandid'] . " ORDER BY name ASC " . $limitQuery);
 		else :
-			$data = $this->connect->query($query);
+			$data = $this->connect->query($query . " ORDER BY name ASC " . $limitQuery);
 		endif;
 
 		// return $result;

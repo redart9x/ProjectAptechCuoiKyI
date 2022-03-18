@@ -20,7 +20,7 @@
     		Unactive
   		</label>
   	</div>
-	<input type="submit" name="submit" value="Change" class="btn btn-primary" style="margin-top:10px">
+	<input type="submit" name="submit" value="Cập nhật" class="btn btn-primary" style="margin-top:10px">
 </form>
 		</div>
 	</div>

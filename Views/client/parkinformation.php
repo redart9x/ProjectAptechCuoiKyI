@@ -155,11 +155,16 @@
 
     @media only screen and (max-width: 992px) {
         h1 {
-			font-size: 30px !important;
-		}
-        .park-introduce, .park-aim, .park-guide, .park-contact {
+            font-size: 30px !important;
+        }
+
+        .park-introduce,
+        .park-aim,
+        .park-guide,
+        .park-contact {
             padding: 40px 60px;
         }
+
         .introduce-img,
         .aim-img {
             width: 200px;
@@ -170,6 +175,7 @@
             top: -1%;
             left: 5%;
         }
+
         .introduce-img.img-2 {
             bottom: 30%;
             right: 4%;
@@ -184,31 +190,43 @@
             bottom: 21%;
             right: -8%;
         }
+
         .aim-img.img-2 {
             bottom: 40%;
             right: 0%;
         }
     }
+
     @media only screen and (max-width: 768px) {
         h1 {
-			font-size: 24px !important;
-		}
-        .content-aim, .content-introduce, .contact-container {
-			display: block !important;
-		}
-        .park-introduce > div, .content-aim > div, .content-introduce > div, .contact-container > div {
+            font-size: 24px !important;
+        }
+
+        .content-aim,
+        .content-introduce,
+        .contact-container {
+            display: block !important;
+        }
+
+        .park-introduce>div,
+        .content-aim>div,
+        .content-introduce>div,
+        .contact-container>div {
             width: 100% !important;
         }
-        .aim-img, .introduce-img {
+
+        .aim-img,
+        .introduce-img {
             display: none;
         }
     }
+
     @media only screen and (max-width: 576px) {
-		h1 {
-			font-size: 18 !important;
-		}
-		
-	}
+        h1 {
+            font-size: 18 !important;
+        }
+
+    }
 </style>
 
 <!-- MAP -->
@@ -226,9 +244,9 @@
         </div>
         <div class="content-introduce d-flex">
             <div class="w-50">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque, esse itaque eius animi numquam eum quae sequi voluptatibus ipsa illum doloribus odio ratione non provident, dolorem quibusdam veniam ut molestiae natus sed quidem! Beatae quaerat voluptate nihil explicabo cum tenetur nobis mollitia corporis et libero.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati pariatur dolorum praesentium magni autem aperiam eius, sint sapiente quos. Nesciunt, qui. Amet tenetur expedita enim quos officia id cum adipisci!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur nihil, maxime, omnis perspiciatis libero ad inventore quisquam quis dolores in eligendi nisi fugiat labore!</p>
+                <p>Funzone là tổ hợp giải trí Cách trung tâm Hà Nội khoảng 10km. Những năm gần đây, Funzone là địa điểm lý tưởng cho những ai yêu thích hình thức du lịch khám phá thiên nhiên. Trọn bộ hướng dẫn ăn - chơi - ngủ - nghỉ vừa vui vừa tiết kiệm cho những du khách khi tới tham quan trải nghiệm tại đây.</p>
+                <p>Tọa lạc trên một không gian rộng lớn và thoáng đãng, chỉ cách Trung tâm hội nghị Quốc gia 6km, dọc theo Đại lộ Thăng Long. Công viên nằm ở đường Lê Trọng Tấn, An Khánh, Hoài Đức, Hà Nội (gần đại lộ Thăng Long).</p>
+                <p>Để có thể di chuyển đến Funzone quý khách có thể sử dụng phương tiện cá nhân hoặc xe buýt để thuận tiện. Dưới đây sẽ là những hướng dẫn cụ thể nhất giúp các bạn có thể ghé công viên giải trí một cách nhanh nhất:</p>
             </div>
             <div class="position-relative w-50">
                 <img class="introduce-img img-1" src="./image/information/8.jpg" alt="#" />
@@ -250,9 +268,14 @@
                 <img class="aim-img img-2" src="./image/information/11.jpeg" alt="#" />
             </div>
             <div class="w-50">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque, esse itaque eius animi numquam eum quae sequi voluptatibus ipsa illum doloribus odio ratione non provident, dolorem quibusdam veniam ut molestiae natus sed quidem! Beatae quaerat voluptate nihil explicabo cum tenetur nobis mollitia corporis et libero.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati pariatur dolorum praesentium magni autem aperiam eius, sint sapiente quos. Nesciunt, qui. Amet tenetur expedita enim quos officia id cum adipisci!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur nihil, maxime, omnis perspiciatis libero ad inventore quisquam quis dolores in eligendi nisi fugiat labore!</p>
+                <p><b>Funzone được xây dựng với mục tiêu trở thành:</b></p>
+                <ul>
+                    <li>Cửa ngõ du lịch của Hà Nội, điểm đến của du khách trong nước và quốc tế khi đến Hà Nội muốn tìm hiểu, khảo sát, nghiên cứu về văn hóa, truyền thống Việt Nam.</li>
+                    <li>Một địa điểm vui chơi giải trí đa năng, tiếp cận công nghệ hiện đại.</li>
+                    <li>Địa điểm hàng đầu cho hoạt động tổ chức sự kiện văn hóa, kinh tế, chính trị trọng đại của quốc gia.</li>
+                    <li>Giá trị xã hội: Tạo việc làm cho lực lượng lao động địa phương, góp phần thúc đẩy kinh tế địa phương và quốc gia, trở thành nhân tố cân bằng cho hệ thống du lịch, dịch vụ và nguồn lực của toàn bộ khu vực lân cận.</li>
+                    <li>Giá trị giải trí: Thỏa mãn nhu cầu giải trí ngày càng cao của khách hàng trong nước và du khách quốc tế.</li>
+                </ul>
             </div>
         </div>
     </div>

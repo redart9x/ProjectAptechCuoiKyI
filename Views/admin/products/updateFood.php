@@ -32,7 +32,7 @@
 				  		</label>
 				  	</div>
 				
-				<input type="submit" name="submit" value="Thêm mới" class="btn btn-primary" style="margin-top: 10px;width: 150px;">
+				<input type="submit" name="submit" value="Cập nhật" class="btn btn-primary" style="margin-top: 10px;width: 150px;">
 			</form>
 		</div>
 	</div>

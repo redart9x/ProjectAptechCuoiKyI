@@ -25,7 +25,7 @@ class adminModel
 
 	function getFeedback()
 	{
-		$limit = 3;
+		$limit = 10;
 		$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
 		$curPage = $curPage < 1 ? 1 : $curPage;
 		$totalResult = $this->connect->query("SELECT COUNT(id) AS total FROM feedback");
@@ -133,7 +133,7 @@ class adminModel
 
 	function showBrands()
 	{
-		if (isset($_GET['request']) && $_GET['request'] == 'brands') {
+		if (!isset($_GET['request']) || (isset($_GET['request']) && $_GET['request'] == 'brands')) {
 			$limit = 10;
 			$curPage = isset($_GET['page']) ? $_GET['page'] : 1;
 			$curPage = $curPage < 1 ? 1 : $curPage;

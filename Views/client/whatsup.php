@@ -343,7 +343,7 @@
 				<div class="data-event-date" data-end-date="<?= $item['end_date'] ?>" data-start-date="<?= $item['open_date'] ?>"></div>
 				<div class="event-container">
 					<div class="intro">
-						<div class="title"><?= $item['id'] . '-' . $item['name']; ?></div>
+						<div class="title"><?= $item['name']; ?></div>
 						<div class="info content-section three-line-text"><?= $item['content']; ?></div>
 						<div class="mt-2 detail-btn-section text-decoration-underline text-end text-primary btn-cursor">Xem chi tiết</div>
 						<div class="mt-3 time-screen-md fw-bold">

@@ -195,8 +195,8 @@
                     allField.addOpenDate.fieldError.textContent = 'Thời gian bắt đầu phải < kết thúc!'
                     allField.addOpenDate.field.classList.add("input-error");
                 } else {
-                    allField.addEndDate.fieldError.textContent = ''
-                    allField.addEndDate.field.classList.remove("input-error");
+                    allField.addOpenDate.fieldError.textContent = ''
+                    allField.addOpenDate.field.classList.remove("input-error");
                 }
                 addEventBtn.disabled = true;
             }
